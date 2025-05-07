@@ -40,16 +40,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useDisplay } from 'vuetify';
+import {defineComponent} from 'vue';
+import {useDisplay} from 'vuetify';
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const { smAndDown } = useDisplay();
+    const {smAndDown} = useDisplay();
     const isMobile = smAndDown;
 
-    return { isMobile };
+    return {isMobile};
   },
 });
 </script>

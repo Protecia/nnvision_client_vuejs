@@ -1,6 +1,6 @@
 {
-    "login": "Connexion",
-    "login_title": "Connexion à votre compte Protecia",
-    "microsoft_login": "Se connecter avec Microsoft",
-    "Google_login": "Se connecter avec Google"
+  "login": "Connexion",
+  "login_title": "Connexion à votre compte Protecia",
+  "microsoft_login": "Se connecter avec Microsoft",
+  "Google_login": "Se connecter avec Google"
 }

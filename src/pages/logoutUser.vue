@@ -2,11 +2,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useApi } from "@/composables/apiCall";
+import {useApi} from "@/composables/apiCall";
 import router from "@/router";
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
-const { apiLogout } = useApi();
+const {apiLogout} = useApi();
 
 
 const logout = async () => {
@@ -15,6 +15,8 @@ const logout = async () => {
   await router.push('/loginUser');
 };
 
-onMounted(() => {logout()})
+onMounted(() => {
+  logout()
+})
 
 </script>

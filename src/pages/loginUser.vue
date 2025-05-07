@@ -48,54 +48,54 @@
 
 
 <script lang="ts" setup>
-  import {ref} from 'vue';
-  import {useUserStore} from '@/stores/user'
-  import router from "@/router";
-  import {useApi} from "@/composables/apiCall";
-  import { useI18n } from 'vue-i18n';
+import {ref} from 'vue';
+import {useUserStore} from '@/stores/user'
+import router from "@/router";
+import {useApi} from "@/composables/apiCall";
+import {useI18n} from 'vue-i18n';
 
-  // Traductions
-  const { t, locale } = useI18n();
-  const username = ref('');
-  const password = ref('');
-  const userStore = useUserStore()
-  const {apiCheckUserPassword} = useApi()
+// Traductions
+const {t, locale} = useI18n();
+const username = ref('');
+const password = ref('');
+const userStore = useUserStore()
+const {apiCheckUserPassword} = useApi()
 
-  const form = ref(null);
+const form = ref(null);
 
-  const loginWithDjango = async () => {
-    if (!username.value || !password.value) {
-      console.log('missing credentials')
+const loginWithDjango = async () => {
+  if (!username.value || !password.value) {
+    console.log('missing credentials')
+    return;
+  }
+
+  // Check if the user exists
+  try {
+    const isUser = await apiCheckUserPassword(username.value, password.value);
+    if (!isUser) {
+      console.log('bad credentials')
       return;
     }
+    await router.push('/');
+  } catch (error) {
+    console.warn('Erreur lors de la connexion:', error);
+    // Gérer l'erreur ici, par exemple en affichant un message d'erreur à l'utilisateur
+    // ou en redirigeant vers une page d'erreur
+  }
+};
 
-    // Check if the user exists
-    try {
-      const isUser = await apiCheckUserPassword(username.value, password.value);
-      if (!isUser) {
-        console.log('bad credentials')
-        return;
-      }
-      await router.push('/');
-    } catch (error) {
-      console.warn('Erreur lors de la connexion:', error);
-      // Gérer l'erreur ici, par exemple en affichant un message d'erreur à l'utilisateur
-      // ou en redirigeant vers une page d'erreur
-    }
-    };
+const loginWithGoogle = () => {
+  console.log('Connexion avec Google');
+};
 
-  const loginWithGoogle = () => {
-    console.log('Connexion avec Google');
-  };
-
-  const loginWithMicrosoft = () => {
-    console.log('Connexion avec Microsoft');
-  };
+const loginWithMicrosoft = () => {
+  console.log('Connexion avec Microsoft');
+};
 </script>
 
 
 <style scoped>
-  v-card-actions {
-    padding: 16px;
-  }
+v-card-actions {
+  padding: 16px;
+}
 </style>

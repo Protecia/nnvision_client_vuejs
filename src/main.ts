@@ -5,7 +5,7 @@
  */
 
 // Plugins
-import { registerPlugins } from '@/plugins'
+import {registerPlugins} from '@/plugins'
 
 // Api Mock
 import '@/composables/apiMock'
@@ -14,7 +14,7 @@ import '@/composables/apiMock'
 import App from './App.vue'
 
 // Composables
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 
 // Styles
 import 'unfonts.css'
