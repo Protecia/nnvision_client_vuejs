@@ -1,0 +1,16 @@
+services:
+  protecia-front:
+    image: front/protecia
+    build:
+      context: ../
+      dockerfile: docker-local/Dockerfile
+    container_name: protecia-front
+    command: |
+      sh -c "
+      npm install &&
+      npm run dev -- --host 0.0.0.0
+      "
+    volumes:
+      - /home/jjehl/nnvision_client_vuejs:/App
+    ports:
+      - "8080:3000"

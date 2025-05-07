@@ -1,0 +1,24 @@
+services:
+
+  protecia-front-prod:
+    image: rg.nl-ams.scw.cloud/protecia/protecia-frontend:${IMAGE_TAG}
+    container_name: protecia-front-prod
+    restart: unless-stopped
+    labels:
+      - "traefik.http.services.protecia-front-prod.loadbalancer.server.port=80"
+      - "traefik.http.routers.protecia-front-prod_http.entrypoints=web"
+      - "traefik.http.routers.protecia-front-prod_http.rule=Host(`app.protecia.net`)"
+      - "traefik.http.routers.protecia-front-prod_http.middlewares=protecia-front-prod_https"
+      - "traefik.http.middlewares.protecia-front-prod_https.redirectscheme.scheme=https"
+      - "traefik.http.routers.protecia-front-prod.entrypoints=websecure"
+      - "traefik.http.routers.protecia-front-prod.rule=Host(`app.protecia.net`)"
+      - "traefik.http.routers.protecia-front-prod.tls=true"
+      - "traefik.http.routers.protecia-front-prod.tls.certresolver=myresolver"
+
+    networks:
+      network_protecia_prod:
+
+# Networks
+networks:
+  network_protecia_prod:
+    external: true

@@ -1,0 +1,28 @@
+services:
+
+  protecia-front-re7:
+    image: rg.nl-ams.scw.cloud/protecia/nnvision-frontend:${IMAGE_TAG}
+    container_name: protecia-front-re7
+    restart: unless-stopped
+    labels:
+      - "traefik.http.services.protecia-front-re7.loadbalancer.server.port=80"
+      - "traefik.http.routers.protecia-front-re7_http.entrypoints=web"
+      - "traefik.http.routers.protecia-front-re7_http.rule=Host(`re7.protecia.net`)"
+      - "traefik.http.routers.protecia-front-re7_http.middlewares=protecia-front-re7_https"
+      - "traefik.http.middlewares.protecia-front-re7_https.redirectscheme.scheme=https"
+      - "traefik.http.routers.protecia-front-re7.entrypoints=websecure"
+      - "traefik.http.routers.protecia-front-re7.rule=Host(`re7.protecia.net`)"
+      - "traefik.http.routers.protecia-front-re7.tls=true"
+      - "traefik.http.routers.protecia-front-re7.tls.certresolver=myresolver"
+      #- "traefik.http.routers.protecia-front-re7.middlewares=protecia-re7-auth"
+      # Note: when used in docker-compose.yml all dollar signs in the hash need to be doubled for escaping.
+      # To create a user:password pair, the following command can be used:
+      # echo $(htpasswd -nb user password) | sed -e s/\\$/\\$\\$/g
+      #- "traefik.http.middlewares.protecia-re7-auth.basicauth.users=protecia:$$apr1$$f4ZHGTRQ$$88V6AQCN6VwSJqSwdVEl10"
+    networks:
+      network_protecia_re7:
+
+# Networks
+networks:
+  network_protecia_re7:
+    external: true
