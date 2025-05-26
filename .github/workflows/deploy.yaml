@@ -139,7 +139,7 @@ jobs:
           key_path: ./ssh_key
           port: ${{ env.SSH_PORT }}
           script: |
-            docker login rg.nl-ams.scw.cloud/protecia -u nologin --password ${{ secrets.SCW_SECRET_KEY }}
+            docker login rg.fr-par.scw.cloud/protecia -u nologin --password ${{ secrets.SCW_SECRET_KEY }}
             source ${{ env.VERSION_FILE }}
             cd deploy
             bash start_remote_front.sh $DEPLOY_ENV
