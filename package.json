@@ -6,10 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "build-re7": "run-s type-check build-only-re7",
+    "build-prod": "run-s type-check build-only-prod",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "build-only-prod": "vite build --mode production",
+    "build-only-re7": "vite build --mode re7"
   },
   "dependencies": {
     "@azure/msal-browser": "^4.11.1",
