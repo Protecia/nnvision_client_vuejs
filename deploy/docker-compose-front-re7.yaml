@@ -1,7 +1,7 @@
 services:
 
   protecia-front-re7:
-    image: rg.fr-par.scw.cloud/protecia/nnvision-frontend:${IMAGE_TAG}
+    image: rg.fr-par.scw.cloud/protecia/protecia-frontend:${IMAGE_TAG}
     container_name: protecia-front-re7
     restart: unless-stopped
     labels:
