@@ -26,6 +26,7 @@ axiosInstance.interceptors.response.use(
       // Gérer la connexion refusée
       return Promise.reject(new Error('Erreur réseau (ERR_NETWORK)'));
     }
+    console.log('Base URL:', import.meta.env.VITE_BACKEND_API_URL);
 
     return Promise.reject(error);
   }
