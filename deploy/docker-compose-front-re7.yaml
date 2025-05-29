@@ -14,11 +14,11 @@ services:
       - "traefik.http.routers.protecia-front-re7.rule=Host(`re7.protecia.net`)"
       - "traefik.http.routers.protecia-front-re7.tls=true"
       - "traefik.http.routers.protecia-front-re7.tls.certresolver=myresolver"
-      #- "traefik.http.routers.protecia-front-re7.middlewares=protecia-re7-auth"
+      - "traefik.http.routers.protecia-front-re7.middlewares=protecia-re7-auth"
       # Note: when used in docker-compose.yml all dollar signs in the hash need to be doubled for escaping.
       # To create a user:password pair, the following command can be used:
       # echo $(htpasswd -nb user password) | sed -e s/\\$/\\$\\$/g
-      #- "traefik.http.middlewares.protecia-re7-auth.basicauth.users=protecia:$$apr1$$f4ZHGTRQ$$88V6AQCN6VwSJqSwdVEl10"
+      - "traefik.http.middlewares.protecia-re7-auth.basicauth.users=protecia:$$apr1$$iKOnHryh$$5eugbnhH0o1ICR3SA73uM1"
     networks:
       network_protecia_re7:
 
