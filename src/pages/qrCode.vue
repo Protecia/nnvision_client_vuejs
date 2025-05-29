@@ -133,11 +133,27 @@ onMounted(() => {
   loadUserInfo();
 });
 
-const localisations = ref([]);
-const wifis = ref([]);
-const selectedLocalisation = ref(null);
+type Localisation = {
+  id: number;
+  adress: string;
+  city: string;
+  cp: string;
+  // Ajoute d’autres champs si besoin
+};
+
+const localisations = ref<Localisation[]>([]);
+
+type Wifi = {
+  id: number;
+  ssid: string;
+  active: boolean;
+  // autres champs
+};
+const wifis = ref<Wifi[]>([]);
+
+const selectedLocalisation = ref<Localisation | null>(null);
 const wifiDialog = ref(false);
-const selectedWifi = ref(null);
+const selectedWifi = ref<Wifi | null>(null);
 const api = useApi();
 const qrUrl = ref('');
 const qrDialog = ref(false);
@@ -146,14 +162,14 @@ onMounted(async () => {
   localisations.value = await api.getUserLocalisations();
 });
 
-const fetchWifi = async (loc) => {
+const fetchWifi = async (loc: Localisation) => {
   selectedLocalisation.value = loc;
   wifis.value = await api.getLocalisationWifis(loc.id);
   wifiDialog.value = true;
 };
 
 // Fonction pour afficher le QR code
-const showQrCode = async (wifi) => {
+const showQrCode = async (wifi: Wifi) => {
   selectedWifi.value = wifi;
   qrUrl.value = await api.getQrCodeUrl(wifi.id); // Récupère l'URL à partir de l'API
   qrDialog.value = true;
