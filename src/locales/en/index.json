@@ -2,5 +2,7 @@
   "message_for": "Message for",
   "change_cat_name": "Change the chat name",
   "new_name": "New name",
-  "cat_home": "Hello, how can I help you?"
+  "cat_home": "Hello, how can I help you?",
+  "menu": {"home": "Home", "logout": "Logout", "add_camera": "Add camera"
+  }
 }

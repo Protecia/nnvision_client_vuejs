@@ -2,5 +2,10 @@
   "message_for": "Message pour",
   "change_cat_name": "Changer le nom du chat",
   "new_name": "Nouveau nom",
-  "cat_home": "Bonjour, comment puis-je vous aider ?"
+  "cat_home": "Bonjour, comment puis-je vous aider ?",
+  "menu": {
+    "home": "Accueil",
+    "logout": "Déconnexion",
+    "add_camera": "Ajouter une caméra"
+  }
 }

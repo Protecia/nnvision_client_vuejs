@@ -16,8 +16,9 @@
     <!-- Menu de navigation -->
     <v-spacer></v-spacer>
     <v-row v-if="!isMobile" class="d-flex align-center">
-      <v-btn variant="text" to="/">Accueil</v-btn>
-      <v-btn variant="text" to="/logoutUser">Logout</v-btn>
+      <v-btn variant="text" to="/">{{ t("index.menu.home") }}</v-btn>
+      <v-btn variant="text" to="/logoutUser">{{ t("index.menu.logout") }}</v-btn>
+      <v-btn variant="text" to="/qrCode">{{ t("index.menu.add_camera") }}</v-btn>
     </v-row>
 
     <!-- Menu hamburger pour mobile -->
@@ -39,18 +40,11 @@
   </v-app-bar>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
-import {useDisplay} from 'vuetify';
+<script lang="ts" setup>
+import { useDisplay } from 'vuetify';
+import { useI18n } from 'vue-i18n';
 
-export default defineComponent({
-  name: 'App',
-  setup() {
-    const {smAndDown} = useDisplay();
-    const isMobile = smAndDown;
-
-    return {isMobile};
-  },
-});
+const { t } = useI18n();
+const { smAndDown: isMobile } = useDisplay();
 </script>
 
