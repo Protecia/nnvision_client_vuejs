@@ -17,8 +17,9 @@
     <v-spacer></v-spacer>
     <v-row v-if="!isMobile" class="d-flex align-center">
       <v-btn variant="text" to="/">{{ t("index.menu.home") }}</v-btn>
-      <v-btn variant="text" to="/logoutUser">{{ t("index.menu.logout") }}</v-btn>
       <v-btn variant="text" to="/qrCode">{{ t("index.menu.add_camera") }}</v-btn>
+      <v-btn variant="text" to="/logoutUser">{{ t("index.menu.logout") }}</v-btn>
+
     </v-row>
 
     <!-- Menu hamburger pour mobile -->
@@ -30,10 +31,13 @@
       </template>
       <v-list>
         <v-list-item link to="/">
-          <v-list-item-title>Accueil</v-list-item-title>
+          <v-list-item-title>{{ t("index.menu.home") }}</v-list-item-title>
         </v-list-item>
-        <v-list-item link to="/services">
-          <v-list-item-title>Logout</v-list-item-title>
+        <v-list-item link to="/qrCode">
+          <v-list-item-title>{{ t("index.menu.add_camera") }}</v-list-item-title>
+        </v-list-item>
+        <v-list-item link to="/logoutUser">
+          <v-list-item-title>{{ t("index.menu.logout") }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>

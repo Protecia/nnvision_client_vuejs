@@ -2,5 +2,7 @@
   "login": "Login",
   "login_title": "Login to your Protecia account",
   "microsoft_login": "Sign in with Microsoft",
-  "Google_login": "Sign in with Google"
+  "Google_login": "Sign in with Google",
+  "password": "Password",
+  "username": "Username"
 }

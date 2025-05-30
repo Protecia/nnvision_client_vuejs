@@ -11,7 +11,7 @@
               <v-text-field
                 prepend-icon="mdi-account"
                 name="login"
-                label="Nom d'utilisateur"
+                :label="t('login.username')"
                 type="text"
                 v-model="username"
                 outlined
@@ -19,10 +19,13 @@
               <v-text-field
                 prepend-icon="mdi-lock"
                 name="password"
-                label="Mot de passe"
-                type="password"
+                :label="t('login.password')"
+                :type="showPassword ? 'text' : 'password'"
                 v-model="password"
                 outlined
+                @keyup.enter="loginWithDjango"
+                :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                @click:append="showPassword = !showPassword"
               ></v-text-field>
               <v-card-actions class="">
                 <v-spacer></v-spacer>
@@ -54,6 +57,7 @@ import router from "@/router";
 import {useApi} from "@/composables/apiCall";
 import {useI18n} from 'vue-i18n';
 
+const showPassword = ref(false);
 // Traductions
 const {t, locale} = useI18n();
 const username = ref('');
